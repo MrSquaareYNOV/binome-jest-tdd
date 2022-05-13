@@ -28,4 +28,8 @@ describe("arabicToRoman", () => {
   it("should return I for 1", () => {
     expect(arabicToRomain(1)).toBe("I");
   });
+
+  it("should return II for 2", () => {
+    expect(arabicToRomain(2)).toBe("II");
+  });
 });
