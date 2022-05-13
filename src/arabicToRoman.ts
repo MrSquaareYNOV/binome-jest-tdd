@@ -39,5 +39,9 @@ export const arabicToRomain = (nb: number): string => {
     return "C";
   }
 
+  if (nb === 500) {
+    return "D";
+  }
+
   return " ";
 };
