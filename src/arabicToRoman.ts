@@ -44,5 +44,16 @@ export const arabicToRomain = (nb: number): string => {
     return result;
   }
 
+  if (nb <= 300) {
+    let result = "";
+
+    while (nb > 0) {
+      result += "C";
+      nb -= 100;
+    }
+
+    return result;
+  }
+
   return " ";
 };
