@@ -100,4 +100,8 @@ describe("arabicToRoman", () => {
   it("should return MMM for 3000", () => {
     expect(arabicToRomain(3000)).toBe("MMM");
   });
+
+  it("should return MCMIII for 1903", () => {
+    expect(arabicToRomain(1903)).toBe("MCMIII");
+  });
 });
