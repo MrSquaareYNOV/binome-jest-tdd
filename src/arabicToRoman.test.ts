@@ -84,4 +84,20 @@ describe("arabicToRoman", () => {
   it("should return CCC for 300", () => {
     expect(arabicToRomain(300)).toBe("CCC");
   });
+
+  it("should return CD for 400", () => {
+    expect(arabicToRomain(400)).toBe("CD");
+  });
+
+  it("should return CM for 900", () => {
+    expect(arabicToRomain(900)).toBe("CM");
+  });
+
+  it("should return MM for 2000", () => {
+    expect(arabicToRomain(2000)).toBe("MM");
+  });
+
+  it("should return MMM for 3000", () => {
+    expect(arabicToRomain(3000)).toBe("MMM");
+  });
 });
