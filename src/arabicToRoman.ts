@@ -33,5 +33,16 @@ export const arabicToRomain = (nb: number): string => {
     return arabicRomanMap[4].roman + arabicRomanMap[5].roman;
   }
 
+  if (nb <= 30) {
+    let result = "";
+
+    while (nb > 0) {
+      result += "X";
+      nb -= 10;
+    }
+
+    return result;
+  }
+
   return " ";
 };
