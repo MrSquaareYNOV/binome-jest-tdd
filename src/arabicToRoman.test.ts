@@ -76,4 +76,12 @@ describe("arabicToRoman", () => {
   it("should return XXX for 30", () => {
     expect(arabicToRomain(30)).toBe("XXX");
   });
+
+  it("should return CC for 200", () => {
+    expect(arabicToRomain(200)).toBe("CC");
+  });
+
+  it("should return CCC for 300", () => {
+    expect(arabicToRomain(300)).toBe("CCC");
+  });
 });
