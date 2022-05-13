@@ -24,4 +24,8 @@ describe("arabicToRoman", () => {
   it("should throw error for too high number", () => {
     expect(() => arabicToRomain(5000)).toThrow("Number too high: 5000");
   });
+
+  it("should return I for 1", () => {
+    expect(arabicToRomain(1)).toBe("I");
+  });
 });
