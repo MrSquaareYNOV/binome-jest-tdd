@@ -16,4 +16,12 @@ describe("arabicToRoman", () => {
   it("should not return empty string for positive number", () => {
     expect(arabicToRomain(1)).not.toBe("");
   });
+
+  it("should throw error for too high number", () => {
+    expect(() => arabicToRomain(4000)).toThrow("Number too high: 4000");
+  });
+
+  it("should throw error for too high number", () => {
+    expect(() => arabicToRomain(5000)).toThrow("Number too high: 5000");
+  });
 });
