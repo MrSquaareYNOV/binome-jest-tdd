@@ -3,48 +3,26 @@ export const arabicToRomain = (nb: number): string => {
     throw new Error("Number too high: " + nb);
   }
 
-  if (nb === 0) {
+  if (nb <= 0) {
     return "";
   }
 
-  if (nb < 0) {
-    return "";
-  }
+  const arabicRomanMap = [
+    { arabic: 1, roman: "I" },
+    { arabic: 2, roman: "II" },
+    { arabic: 3, roman: "III" },
+    { arabic: 5, roman: "V" },
+    { arabic: 10, roman: "X" },
+    { arabic: 50, roman: "L" },
+    { arabic: 100, roman: "C" },
+    { arabic: 500, roman: "D" },
+    { arabic: 1000, roman: "M" },
+  ];
 
-  if (nb === 1) {
-    return "I";
-  }
+  const found = arabicRomanMap.find(({ arabic }) => nb === arabic)?.roman;
 
-  if (nb === 2) {
-    return "II";
-  }
-
-  if (nb === 3) {
-    return "III";
-  }
-
-  if (nb === 5) {
-    return "V";
-  }
-
-  if (nb === 10) {
-    return "X";
-  }
-
-  if (nb === 50) {
-    return "L";
-  }
-
-  if (nb === 100) {
-    return "C";
-  }
-
-  if (nb === 500) {
-    return "D";
-  }
-
-  if (nb === 1000) {
-    return "M";
+  if (found) {
+    return found;
   }
 
   return " ";
