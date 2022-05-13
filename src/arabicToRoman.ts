@@ -27,5 +27,9 @@ export const arabicToRomain = (nb: number): string => {
     return "V";
   }
 
+  if (nb === 10) {
+    return "X";
+  }
+
   return " ";
 };
