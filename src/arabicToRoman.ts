@@ -15,43 +15,46 @@ export const arabicToRomain = (nb: number): string => {
     { arabic: 100, roman: "C", repeatable: true, subtractableBy: "X" },
     { arabic: 500, roman: "D", subtractableBy: "C" },
     { arabic: 1000, roman: "M", repeatable: true, subtractableBy: "C" },
-  ];
+  ].reverse();
 
-  const found = arabicRomanMap.find(({ arabic }) => nb === arabic)?.roman;
-
-  if (found) {
-    return found;
-  }
-
-  const subtractables = arabicRomanMap.filter(
-    ({ subtractableBy }) => subtractableBy
-  );
-
-  for (const subtractable of subtractables) {
-    const subtractableByMap = arabicRomanMap.find(
-      ({ roman }) => roman === subtractable.subtractableBy
-    );
-
-    if (!subtractableByMap) continue;
-    if (nb !== subtractable.arabic - subtractableByMap.arabic) continue;
-
-    return subtractableByMap.roman + subtractable.roman;
-  }
-
-  const repeatables = arabicRomanMap.filter(({ repeatable }) => repeatable);
-
-  const repeatable = repeatables.find(({ arabic }) => nb <= arabic * 3);
-
-  if (repeatable) {
-    let result = "";
-
-    while (nb >= repeatable.arabic) {
-      result += repeatable.roman;
-      nb -= repeatable.arabic;
+  for (const arabicRoman of arabicRomanMap) {
+    if (nb >= arabicRoman.arabic) {
+      return arabicRoman.roman + arabicToRomain(nb - arabicRoman.arabic);
     }
 
-    return result;
+    if (arabicRoman.subtractableBy) {
+      const subtractableBy = arabicRomanMap.find(
+        (item) => item.roman === arabicRoman.subtractableBy
+      );
+
+      if (subtractableBy && nb >= arabicRoman.arabic - subtractableBy.arabic) {
+        return (
+          subtractableBy.roman +
+          arabicRoman.roman +
+          arabicToRomain(nb - (arabicRoman.arabic - subtractableBy.arabic))
+        );
+      }
+    }
+
+    if (arabicRoman.repeatable) {
+      if (nb >= arabicRoman.arabic * 2) {
+        return (
+          arabicRoman.roman +
+          arabicRoman.roman +
+          arabicToRomain(nb - arabicRoman.arabic * 2)
+        );
+      }
+
+      if (nb >= arabicRoman.arabic * 3) {
+        return (
+          arabicRoman.roman +
+          arabicRoman.roman +
+          arabicRoman.roman +
+          arabicToRomain(nb - arabicRoman.arabic * 3)
+        );
+      }
+    }
   }
 
-  return " ";
+  return "";
 };
