@@ -29,5 +29,9 @@ export const arabicToRomain = (nb: number): string => {
     return arabicRomanMap[0].roman + arabicRomanMap[3].roman;
   }
 
+  if (nb + arabicRomanMap[4].arabic === arabicRomanMap[5].arabic) {
+    return arabicRomanMap[4].roman + arabicRomanMap[5].roman;
+  }
+
   return " ";
 };
