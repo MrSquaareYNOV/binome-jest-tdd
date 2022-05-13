@@ -44,4 +44,8 @@ describe("arabicToRoman", () => {
   it("should return X for 10", () => {
     expect(arabicToRomain(10)).toBe("X");
   });
+
+  it("should return L for 50", () => {
+    expect(arabicToRomain(50)).toBe("L");
+  });
 });
